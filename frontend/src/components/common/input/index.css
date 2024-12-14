@@ -1,0 +1,29 @@
+.input {
+  
+
+  &:hover, &:focus {
+    /* filter: brightness(150%); */
+  }
+  @apply flex relative bg-gray-600 rounded-btn;
+  .icon {
+    @apply absolute left-[8px] top-[50%] translate-y-[-50%] w-[18px] h-[18px] fill-gray-400;
+  }
+  .post-icon {
+    @apply absolute right-[8px] top-[50%] translate-y-[-50%] h-[17px];
+  }
+  input {
+    @apply m-auto bg-gray-600 rounded-btn box-border w-full h-[44px] !outline-none border-none text-[15px] font-normal py-[13px] px-2 text-white-100;
+  }
+  &.border {
+    @apply duration-300 bg-transparent border-[#333337] border-[1px];
+    input {
+      @apply bg-transparent;
+    }
+  }
+  &.line {
+    @apply !bg-transparent border-b-[1px] dark:border-gray-600;
+    input {
+      @apply !bg-transparent;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.short-day {
+  @apply flex flex-col rounded-btn w-[50px] h-[63px] justify-between py-[6px] px-[3px];
+  &.active {
+    @apply dark:bg-gray-300;
+    .date {
+      @apply bg-accent-100 dark:text-white-100 dark:bg-accent-900;
+    }
+  }
+  .date {
+    @apply mx-auto text-[13px] font-medium py-[5px] px-[7px] rounded-full;
+  }
+  .plan {
+    @apply w-[6px] h-[6px] rounded-full mx-[0.75px];
+  }
+}

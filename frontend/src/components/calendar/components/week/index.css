@@ -1,0 +1,6 @@
+.week {
+  @apply w-full overflow-scroll;
+  .carousel {
+    @apply w-fit flex;
+  }
+}

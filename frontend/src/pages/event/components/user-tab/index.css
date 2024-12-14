@@ -1,0 +1,11 @@
+.user-tab {
+  @apply flex h-[60px];
+  .user-tab-name {
+    @apply ml-3 h-full w-full justify-between flex;
+  }
+  &:not(:last-child) {
+    .user-tab-name {
+      @apply border-b-[1px] dark:border-gray-600;
+    }
+  }
+}

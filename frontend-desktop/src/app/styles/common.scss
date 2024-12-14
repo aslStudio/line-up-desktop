@@ -1,0 +1,109 @@
+@use "variables";
+
+$mainFontFamily: 'Inter';
+
+@font-face {
+    font-family: $mainFontFamily;
+    src:
+            local('MainFont'),
+            url("../../shared/assets/fonts/Inter-Regular.ttf") format('ttf'),
+            url("../../shared/assets/fonts/Inter-Regular.woff") format('woff'),
+            url("../../shared/assets/fonts/Inter-Regular.woff2") format('woff2');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: $mainFontFamily;
+    src:
+            local('MainFont'),
+            url("../../shared/assets/fonts/Inter-Medium.ttf") format('ttf'),
+            url("../../shared/assets/fonts/Inter-Medium.woff") format('woff'),
+            url("../../shared/assets/fonts/Inter-Medium.woff2") format('woff2');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: $mainFontFamily;
+    src:
+            local('MainFont'),
+            url("../../shared/assets/fonts/Inter-SemiBold.ttf") format('ttf'),
+            url("../../shared/assets/fonts/Inter-SemiBold.woff") format('woff'),
+            url("../../shared/assets/fonts/Inter-SemiBold.woff2") format('woff2');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: $mainFontFamily;
+    src:
+            local('MainFont'),
+            url("../../shared/assets/fonts/Inter-Bold.ttf") format('ttf'),
+            url("../../shared/assets/fonts/Inter-Bold.woff") format('woff'),
+            url("../../shared/assets/fonts/Inter-Bold.woff2") format('woff2');
+    font-weight: 700;
+}
+
+html {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    height: 100vh;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    font-family: $mainFontFamily, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100vh;
+    background-color: var(--background-base);
+    color: var(--color-base);
+    font-size: 14px;
+
+    transition: 0.3s ease;
+    transition-property: background-color;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+#root {
+    overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+    margin: 0;
+}
+
+.container {
+  box-sizing: border-box;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+  @media (min-width: 320px) {
+    padding-left: 7.69%;
+    padding-right: 7.69%;
+  }
+  @media (min-width: 768px) {
+    padding-right: 7.8%;
+    padding-left: 7.8%;
+  }
+  @media (min-width: 1200px) {
+    padding-right: toRem(80);
+    padding-left: toRem(80);
+  }
+  @media (min-width: 1300px) {
+      padding-right: 0;
+      padding-left: 0;
+  }
+}

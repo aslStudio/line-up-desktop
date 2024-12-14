@@ -1,0 +1,12 @@
+.canvas-calendar {
+  .plus {
+    @apply m-auto dark:text-accent-100 text-[25px] font-normal;
+  }
+  .header {
+    @apply flex justify-between w-full pb-4 border-b-[1px] border-[#6666661A];
+  }
+}
+
+.canvas-calendar div[role="dialog"] {
+  bottom: 56px;
+}

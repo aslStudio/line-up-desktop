@@ -1,0 +1,10 @@
+.button {
+  @apply duration-300;
+  filter: brightness(100%);
+  &:hover, &:active {
+    filter: brightness(130%);
+  }
+  &.primary {
+    @apply px-[9.5px] pb-[10.5px] pt-[9.5px] bg-gray-600 rounded-btn duration-300;
+  }
+}

@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root{
+  --rsbs-bg: #1E1E1E;
+}
+
+html.dark:root{
+  --rsbs-bg:#F4F4F4
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+html, body {
+  @apply relative m-0 p-0 w-full h-full bg-backgroundSecondary overflow-y-scroll bg-[#1E1E1E];
+}
+
+html.dark > body{
+  background: white;
+}
+ 
+button:focus-visible{
+  outline: none
+}
+#root {
+  @apply h-fit min-h-screen w-full relative overflow-hidden;
+}
+
+.applications {
+  @apply bg-accent-500;
+  span {
+    @apply !text-statusGreen;
+  }
+}
+
+.pending {
+  @apply bg-[#303030];
+  span {
+    @apply !text-statusGray;
+  }
+}
+
+.private {
+  @apply bg-[#2E3236];
+  span {
+    @apply !text-statusBlue;
+  }
+}
+
+div[data-rsbs-overlay], div[data-rsbs-backdrop], div[data-rsbs-root]:after{
+  z-index: 60;
+}

@@ -1,0 +1,23 @@
+.week-grid {
+  @apply w-full h-full overflow-scroll;
+  .column {
+    @apply flex flex-col;
+    .label {
+      @apply  w-[135px] h-[36px] uppercase flex justify-around rounded-btn;
+    }
+    .new-block {
+      @apply flex flex-col justify-center bg-accent-500 dark:bg-[#F0FAF6] rounded h-[188px] w-full duration-300;
+      &:hover, &:active {
+        filter: brightness(110%)
+      }
+    }
+    .plan-column {
+      @apply flex flex-col h-full;
+    }
+    &:not(:first-child) {
+      .plan-column {
+        @apply dark:border-gray-300 border-r-[1px];
+      }
+    }
+  }
+}

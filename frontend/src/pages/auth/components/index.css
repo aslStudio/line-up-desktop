@@ -1,0 +1,12 @@
+.auth {
+  @apply h-screen flex flex-col flex-grow w-full;
+  .title {
+    @apply text-[20px] dark:text-white-100 font-semibold;
+  }
+  .sub-title {
+    @apply text-[12px] dark:text-gray-400 font-medium mt-1;
+  }
+  .link {
+    @apply text-accent-100 text-[15px] font-medium !text-left;
+  }
+}

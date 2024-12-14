@@ -1,0 +1,12 @@
+.checkbox-wrap {
+  @apply flex mb-[10px];
+  .label {
+    @apply ml-3 my-auto   text-[15px] font-medium;
+  }
+  .checkbox {
+    @apply overflow-hidden w-[28px] h-[28px] flex border-[1.5px] border-[#373737] dark:border-[#E7E7E7] rounded-[4.67px];
+  }
+  .check {
+    @apply transition-transform h-[15px] w-auto m-auto  
+  }
+}

@@ -1,0 +1,21 @@
+.event {
+  @apply px-4 py-6 flex flex-col;
+  .box {
+    @apply overflow-hidden dark:border-gray-600 border-[1px] rounded-[8px];
+  }
+  .split {
+    @apply border-b-[1px] dark:border-gray-600;
+  }
+  .button {
+    @apply mt-4 dark:text-[#2B2D35] text-[17px] font-medium;
+    &.approve {
+      @apply !bg-accent-100;
+    }
+    &.decline {
+      @apply !bg-transparent !text-[#FF5233] border-[#FF5233] border-[1px];
+    }
+  }
+  .back-button {
+    @apply mt-4 !bg-[#292929] dark:text-white-100 text-[17px] font-medium;
+  }
+}

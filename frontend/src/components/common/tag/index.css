@@ -1,0 +1,6 @@
+.tag {
+  @apply w-fit flex bg-[#373737] dark:bg-white-100 py-2 px-4 rounded-3xl;
+  .title {
+    @apply break-keep whitespace-nowrap text-[15px] ;
+  }
+}

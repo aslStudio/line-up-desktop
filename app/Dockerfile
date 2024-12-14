@@ -1,0 +1,31 @@
+# Use the official Python image as the base image
+FROM python:3.12.7-slim as development
+
+ARG DATABASE_USER
+ARG DATABASE_PASSWORD
+ARG DATABASE_NAME
+ARG DATABASE_HOST
+ARG DATABASE_PORT
+ARG DJANGO_SETTINGS_MODULE
+
+ENV DB_USER=$DATABASE_USER
+ENV DB_PASSWORD=$DATABASE_PASSWORD
+ENV DB_NAME=$DATABASE_NAME
+ENV DB_HOST=$DATABASE_HOST
+ENV DB_PORT=$DATABASE_PORT
+ENV DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE
+
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+WORKDIR /app
+
+COPY app/requirements.txt /app/
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . /app/
+
+EXPOSE 8000
+
+CMD ["sh", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]

@@ -1,0 +1,6 @@
+.accordion {
+  @apply w-full;
+  .arrow {
+    @apply my-auto h-[20px] dark:fill-gray-400 duration-300;
+  }
+}

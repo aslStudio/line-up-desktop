@@ -1,0 +1,29 @@
+.new-project {
+    @apply p-4 flex flex-col w-full h-full;
+    .image {
+      @apply flex flex-col w-full h-[343px] bg-gray-600 rounded-btn;
+    }
+    .title {
+      input {
+        @apply text-[28px];
+      }
+    }
+    .block {
+      @apply flex justify-between mt-4 pb-4 border-b-[1px] dark:border-gray-600;
+    }
+    .color-pick {
+      @apply w-full overflow-x-scroll;
+      .color {
+        @apply w-[40px] h-[40px] rounded-full mr-1;
+      }
+    }
+    .button {
+      @apply mt-4 dark:text-[#2B2D35] text-[17px] font-medium;
+      &.approve {
+        @apply !bg-accent-100;
+      }
+      &.decline {
+        @apply !bg-transparent !text-[#FF5233] border-[#FF5233] border-[1px];
+      }
+    }
+  }

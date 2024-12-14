@@ -1,0 +1,18 @@
+.week-plan {
+  @apply h-fit w-fit pt-2 px-[7px] pb-1;
+  .card {
+    @apply flex flex-col dark:bg-[#343434] w-[121px] h-[188px] pl-[11px] py-2 rounded overflow-hidden relative;
+    .highlight {
+      @apply absolute h-full w-[2px] left-0 top-0;
+    }
+    .header {
+      @apply text-[11px] font-semibold;
+    }
+    .title {
+      @apply mt-[10px] text-[15px] leading-[18px] text-fontPrimary font-medium line-clamp-2;
+    }
+    .time {
+      @apply text-[#A1A2A2] text-[12px] font-normal;
+    }
+  }
+}

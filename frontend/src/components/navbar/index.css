@@ -1,0 +1,20 @@
+.navbar {
+  @apply sm:hidden w-full min-h-[40px] bg-backgroundPrimary fixed bottom-0 flex justify-around py-[7px] dark:bg-white-100 dark:border-t dark:border-solid dark:border-gray-300;
+}
+.tab {
+  @apply flex flex-col mx-auto;
+  span {
+    @apply mt-[6px];
+  }
+  &.active {
+    span {
+      @apply text-accent-100 dark:text-accent-900;
+    }
+    svg {
+      @apply fill-accent-100 dark:fill-accent-900;
+    }
+  }
+}
+.icon {
+  @apply mx-auto;
+}

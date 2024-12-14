@@ -1,0 +1,9 @@
+.toggle {
+  @apply bg-[#7676803D] cursor-pointer rounded-btn flex justify-between;
+  .variant {
+    @apply w-full rounded-btn m-auto py-1 px-2 duration-300 flex text-white-100 dark:!text-black-100;
+    &.selected {
+      @apply bg-[#636366] dark:!bg-white-100 dark:!text-black-100 dark:drop-shadow-lg;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.plan-card {
+  @apply w-full rounded-2xl mt-3 overflow-hidden h-fit dark:bg-white-100;
+  .header {
+    @apply w-full py-[6px] flex justify-center;
+  }
+  .time {
+    @apply my-auto dark:text-gray-500 font-medium text-[14px];
+  }
+  .avatar {
+    @apply !w-[35px] !h-[35px];
+  }
+  .nick {
+    @apply my-auto !text-[14px] ml-[15px] dark:text-gray-500;
+  }
+  .footer {
+    @apply w-full flex h-[48px]  dark:bg-white-100 dark:border-b-0 dark:border-l-0 dark:border-r-0 dark:border-t-2 dark:border-gray-300;
+    .button {
+      @apply bg-gray-700 w-[50%] border-[1px] border-[#232323] dark:bg-white-100 dark:border-b-0 dark:border-t-0 dark:border-l-0 dark:border-r-0;
+    }
+  }
+}

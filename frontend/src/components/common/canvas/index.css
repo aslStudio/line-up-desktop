@@ -1,0 +1,6 @@
+.canvas {
+  @apply duration-100 fixed flex flex-col left-0 bottom-0 w-full bg-gray-600 rounded-t-[32px] py-2 px-4;
+  .anchor {
+    @apply min-h-[4px] w-[45px] dark:bg-gray-500 rounded-[13px] mx-auto;
+  }
+}

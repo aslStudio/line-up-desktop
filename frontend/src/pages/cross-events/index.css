@@ -1,0 +1,9 @@
+.cross-events {
+  @apply w-full flex flex-col p-4;
+  .button {
+    @apply mt-4 w-full dark:text-[#2B2D35] text-[17px] font-medium;
+    &.approve {
+      @apply !bg-accent-100;
+    }
+  }
+}

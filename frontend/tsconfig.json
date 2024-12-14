@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "esnext"],
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "noEmitOnError": true,
+    "strict": false,
+    "jsx": "react-jsx",
+    "skipLibCheck": true,
+    "typeRoots": ["./node_modules/@types", "./types"],
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["*"]
+    },
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src/**/*"]
+}

@@ -1,0 +1,10 @@
+frontend/node_modules
+/dist
+/app/venv
+/app/.env
+/bot/.env
+/bot/venv
+trash/.env
+/postgres
+/.env
+**/.DS_Store

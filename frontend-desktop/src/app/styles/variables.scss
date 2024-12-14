@@ -1,0 +1,11 @@
+:root[data-theme="dark"] {
+    --background-base: #1E1E1E;
+
+    --color-base: #FFFFFF;
+}
+
+:root[data-theme="light"] {
+    --background-base: #FFFFFF;
+
+    --color-base: #000000;
+}

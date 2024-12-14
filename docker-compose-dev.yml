@@ -1,0 +1,145 @@
+services:
+  db:
+    image: postgres:16
+    container_name: db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB']
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+
+  backend:
+    image: line-upp-app:latest
+    container_name: backend
+    build:
+      context: .
+      dockerfile: app/Dockerfile
+      target: development
+    depends_on:
+      - db
+    environment:
+      - DEBUG = ${DEBUG}
+      - DB_NAME = ${DB_NAME}
+      - DB_USER = ${DB_USER}
+      - DB_PASSWORD = ${DB_PASSWORD}
+      - DB_HOST = ${DB_HOST}
+      - DB_PORT = ${DB_PORT}
+      - DJANGO_SETTINGS_MODULE = ${DJANGO_SETTINGS_MODULE}
+
+      - DJANGO_SUPERUSER_USERNAME = ${DJANGO_SUPERUSER_USERNAME}
+      - DJANGO_SUPERUSER_EMAIL = ${DJANGO_SUPERUSER_EMAIL}
+      - DJANGO_SUPERUSER_PASSWORD = ${DJANGO_SUPERUSER_PASSWORD}
+    env_file:
+      - app/.env
+    volumes:
+      - ./app:/app
+    networks:
+      - app-network
+    ports:
+      - 8000:8000
+    command: sh -c "
+            echo '$DJANGO_SUPERUSER_PASSWORD' &&
+            ls event_organizer &&
+            python manage.py migrate &&
+            python manage.py createsuperuser --noinput --username admin2 --email user@example.com || true &&
+            python manage.py runserver 0.0.0.0:8000"
+
+  celery:
+      image: line-upp-app:latest
+      env_file:
+        - app/.env
+      volumes:
+        - ./app:/app
+      environment:
+        - REDIS_HOST = ${REDIS_HOST}
+
+        - DEBUG = ${DEBUG}
+        - DB_NAME = ${DB_NAME}
+        - DB_USER = ${DB_USER}
+        - DB_PASSWORD = ${DB_PASSWORD}
+        - DB_HOST = ${DB_HOST}
+        - DB_PORT = ${DB_PORT}
+        - DJANGO_SETTINGS_MODULE = ${DJANGO_SETTINGS_MODULE}
+      depends_on:
+        - db
+        - backend
+        - redis
+      networks:
+        - app-network
+      command: sh -c "celery -A event_organizer worker -l info"
+
+  celery-beat:
+    image: line-upp-app:latest
+    container_name: celery_beat
+    env_file:
+      - app/.env
+    volumes:
+      - ./app:/app
+    environment:
+      - REDIS_HOST = ${REDIS_HOST}
+
+      - DEBUG = ${DEBUG}
+      - DB_NAME = ${DB_NAME}
+      - DB_USER = ${DB_USER}
+      - DB_PASSWORD = ${DB_PASSWORD}
+      - DB_HOST = ${DB_HOST}
+      - DB_PORT = ${DB_PORT}
+      - DJANGO_SETTINGS_MODULE = ${DJANGO_SETTINGS_MODULE}
+    depends_on:
+      - db
+      - backend
+      - redis
+    networks:
+      - app-network
+    command: sh -c "celery -A event_organizer beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler"
+
+  redis:
+     image: redis:latest
+     ports:
+       - 6379:6379
+     networks:
+       - app-network
+
+  bot:
+    image: line-upp-bot:latest
+    container_name: bot
+    build:
+      context: .
+      dockerfile: bot/Dockerfile
+      target: development
+    depends_on:
+      - backend
+    environment:
+      TELEGRAM_TOKEN: ${TELEGRAM_TOKEN}
+      URI: ${URI}
+    volumes:
+      - ./bot/:/bot
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    restart: on-failure
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./frontend/dist:/app/dist
+      - ./certbot:/etc/letsencrypt
+    networks:
+      - app-network
+    depends_on:
+      - backend
+
+networks:
+  app-network:
+    driver: bridge

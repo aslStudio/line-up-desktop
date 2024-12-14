@@ -1,0 +1,3 @@
+.typography {
+  @apply text-font dark:text-black-100;
+}
